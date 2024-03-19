@@ -8,4 +8,5 @@ echo 'Collecting static files...'
 $RUN_MANAGE_PY collectstatic --no-input
 
 
-exec poetry run daphne mytenderweb.project.asgi:application -p 8000 -b 0.0.0.0
+echo 'Starting Gunicorn server...'
+exec poetry run gunicorn mytenderweb.wsgi:application --bind 0.0.0.0:8000 --workers 3
