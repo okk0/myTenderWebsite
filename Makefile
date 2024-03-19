@@ -12,3 +12,7 @@ lint :
 	poetry run pre-commit run --all-files
 
 update: install install-pre-commit ;
+
+up-dependencies-only:
+	test -f .env || touch .env
+	docker-compose -f docker-compose-dev.yml up -d --force-recreate
